@@ -28,7 +28,6 @@ public class LoginController extends HttpServlet {
 				System.out.println(email);
 				System.out.println(pass);
 
-				// step 2 : process data
 				
 				
 				// play with session
@@ -51,13 +50,11 @@ public class LoginController extends HttpServlet {
 				System.out.println("Printing session creation time");
 				System.out.println(session.getCreationTime());
 				
-				
-				//Process data
 
 				// Write select query for check user is present or not
 				try {
 					Connection con = DBUtil.getMySQLConnection();
-					PreparedStatement ps = con.prepareStatement("Select * FROM login where email = ? AND password = ? ;");
+					PreparedStatement ps = con.prepareStatement("Select * FROM user.registeruser where email = ? AND password = ? ;");
 					ps.setString(1, email);
 					ps.setString(2, pass);
 					ResultSet rs = ps.executeQuery();
@@ -68,22 +65,22 @@ public class LoginController extends HttpServlet {
 						System.out.println("User found !");
 						//get valid user data
 						System.out.println(rs.getInt(1));
-						System.out.println(rs.getString(2));
+						System.out.println(rs.getString(5));
 						
 						//set user id and email in session
 						// for that we have setAttributeMethod
 						
 						session.setAttribute("userIdInSession", rs.getInt(1));
-						session.setAttribute("userEmailInSession", rs.getString(2));
+						session.setAttribute("userEmailInSession", rs.getString(5));
 						
 						System.out.println("=================================");
 						
 						System.out.println(session.getAttribute("userIdInSession"));
 						System.out.println(session.getAttribute("userEmailInSession"));
 						
-						response.sendRedirect("dashboard.jsp");
-						//rd=request.getRequestDispatcher("dashboard.jsp");
-						//rd.forward(request, response);
+						//response.sendRedirect("dashboard.jsp");
+						rd=request.getRequestDispatcher("dashboard.jsp");
+						rd.forward(request, response);
 					} else {
 						System.out.println("User not found !");
 						request.setAttribute("errormessage", "Invalid Email and Password");

@@ -16,7 +16,7 @@ public class DBUtil {
 			// 1. Load the Driver class
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			// 2. Establish the connection
-			con = DriverManager.getConnection("jdbc:mySQL://localhost:3306/advjavajdbc", "root", "root");
+			con = DriverManager.getConnection("jdbc:mySQL://localhost:3306/user", "root", "root");
 			System.out.println("DB Connected !");
 		} catch (Exception e) {
 			e.printStackTrace();
