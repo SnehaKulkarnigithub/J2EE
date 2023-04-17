@@ -40,12 +40,14 @@ public class LoginController extends HttpServlet {
 					System.out.println("Session Invalidate(Destroy current session)");
 					session.invalidate();
 					session=request.getSession();
+					//Specifies the time, in seconds, between client requests before the servlet container will invalidate this session. 
+					//An interval value of zero or less indicates that the session should never timeout.
 					session.setMaxInactiveInterval(0);
 				}
 				
 				//Print current session Id of our browser
-				//Print session Id we have getId method 
 				System.out.println("Printing session Id after invalidate ");
+				//Print session Id we have getId method 
 				System.out.println(session.getId());
 				System.out.println("Printing session creation time");
 				System.out.println(session.getCreationTime());
