@@ -7,12 +7,9 @@
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
-
 	<!-- add value in web.xml in contex param and access it in servlet -->
-	
-	<!-- <context-param>
+	 <context-param>
 		<param-name>dbdriver</param-name>
 		<param-value>com.jdbc.odbc.driver</param-value>
 	</context-param>
- -->	
 </web-app>

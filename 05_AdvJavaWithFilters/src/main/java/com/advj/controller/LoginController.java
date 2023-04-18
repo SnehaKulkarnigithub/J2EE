@@ -59,7 +59,7 @@ public class LoginController extends HttpServlet {
 		// Write select query for check user is present or not
 		try {
 			Connection con = DBUtil.getMySQLConnection();
-			PreparedStatement ps = con.prepareStatement("Select * FROM login where email = ? AND password = ? ;");
+			PreparedStatement ps = con.prepareStatement("Select * FROM 02advjava.login where email = ? AND password = ? ;");
 			ps.setString(1, email);
 			ps.setString(2, pass);
 			ResultSet rs = ps.executeQuery();

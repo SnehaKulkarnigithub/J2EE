@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebInitParam(name = "dbdriver", value = "com.jdbc.ANOTATION")
+
 @WebServlet("/servlet1")
+@WebInitParam(name = "dbdriver", value = "com.jdbc.odbc.driver") 
+
 public class AdminServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -21,7 +23,6 @@ public class AdminServlet extends HttpServlet {
 		/*the method just returns the default value ISO-8859-1), getWriterupdates it to 
 		ISO-8859-1 */
 		PrintWriter out = response.getWriter();
-
 		out.print("welcome ADMIN welcome to servlet");
 		out.close();
 
@@ -31,6 +32,8 @@ public class AdminServlet extends HttpServlet {
 		/*a String containing the value of the context's initialization parameter, 
 		or null if the context's initialization parameter does not exist */
 		System.out.println(servletContext.getInitParameter("dbdriver"));
+		
+
 
 	}
 }
